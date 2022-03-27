@@ -1,0 +1,95 @@
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h2>Restaurent Record App</h2>
+        <div class="d-flex">
+            <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="clickAddRestaurent()">Add Restaurent</button>
+        <div routerLink="/login" class="btn btn-danger mx-3">Logout</div>
+        </div>
+    </div>
+</nav>
+
+<!-- Jumbotron start -->
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Restaurent Records Management</h1>
+        <p class="col-md-8 fs-4">You can save Records of Restaurent using Angular App</p>
+        <a class="btn btn-primary btn-lg" target="_blank" href="https://www.instagram.com/r.a.h.u.l_p.a.t.e.l">Owner Instagram</a>
+    </div>
+</div>
+<!-- Jumbotron end -->
+
+<!-- Table Start Here -->
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th scope="col">Restaurent ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Address</th>
+            <th scope="col">Services</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let apiData of getApiData">
+            <th>{{apiData.id}}</th>
+            <th>{{apiData.name}}</th>
+            <th>{{apiData.email}}</th>
+            <th>{{apiData.mobile}}</th>
+            <th>{{apiData.address}}</th>
+            <th>{{apiData.services}}</th>
+            <th>
+                <button class="btn btn-info mx-2" (click)="editRestaurent(apiData)"  data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                <button class="btn btn-danger mx-2" (click)="removeRestaurent(apiData)">Delete</button>
+            </th>
+        </tr>
+    </tbody>
+</table>
+<!-- Table End Here -->
+
+  
+<!-- Modal start -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Restaurent</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Form Start -->
+                <form [formGroup]="formValue">
+                    <div class="mb-3">
+                        <label for="exampleInputName1" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" 
+                        formControlName="name" placeholder="Restaurent Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email Id</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email" placeholder="Restaurent Email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputMobile1" class="form-label">Mobile Number</label>
+                        <input type="number" class="form-control" id="exampleInputMobile1" formControlName="mobile" placeholder="Restaurent Mobile Number">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputAddress1" class="form-label">Restaurent Address</label>
+                        <input type="text" class="form-control" id="exampleInputAddress1" formControlName="address" placeholder="Restaurent Address">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputServices1" class="form-label">Services</label>
+                        <input type="text" class="form-control" id="exampleInputServices1" formControlName="services" placeholder="Restaurent Services">
+                    </div>
+                </form>
+                <!-- Form End -->
+            </div>
+            <div class="modal-footer">
+                <button type="reset" class="btn btn-secondary">Reset</button>
+                <button type="submit" *ngIf="showBtn" class="btn btn-primary" (click)="updateRestaurent()">Update</button>
+                <button type="submit" *ngIf="showAdd" class="btn btn-primary" (click)="addRestaurent()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal end -->

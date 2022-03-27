@@ -1,0 +1,25 @@
+{
+  "posts": [
+    {
+      "id": 3,
+      "name": "Baba Ka Dhaba",
+      "email": "babakadhaba@gmail.com",
+      "mobile": 9876543210,
+      "address": "Delhi",
+      "services": "Chai,Samosa"
+    }
+  ],
+  "signup": [
+    {
+      "name": "Rahul",
+      "email": "rahul@abc.con",
+      "mobile": 123,
+      "password": "123",
+      "id": 1
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
